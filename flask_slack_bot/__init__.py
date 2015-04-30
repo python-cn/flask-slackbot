@@ -1,6 +1,5 @@
 # coding=utf-8
 from flask import current_app, Blueprint, request, make_response
-from flask.views import MethodView
 
 from slacker import Slacker
 
@@ -20,7 +19,9 @@ class SlackBot(object):
 
     def init_bp(self):
         bp = Blueprint('slack', __name__)
-        bp.add_url_rule(self.callback_url, view_func=self.slack_callback, methods=['POST'])
+        bp.add_url_rule(self.callback_url,
+                        view_func=self.slack_callback,
+                        methods=['POST'])
         self.app.register_blueprint(bp)
 
     def set_handler(self, fn):
@@ -41,7 +42,9 @@ class SlackBot(object):
         if token != current_app.config.get('SLACK_TOKEN'):
             raise Exception('unmatch token')
 
-        # use flag to determine whether response directly, or use slacker to deal
+        '''
+        use flag to determine whether response directly,
+        or use slacker to deal'''
         flag, d = self.handler({
             'token': token,
             'team_id': team_id,
@@ -49,9 +52,9 @@ class SlackBot(object):
             'channel_id': channel_id,
             'channel_name': channel_name,
             'timestamp': timestamp,
-            'user_id': user_name, 
+            'user_id': user_id,
             'user_name': user_name,
-            'text': text, 
+            'text': text,
             'trigger_word': trigger_word
         })
         if flag:

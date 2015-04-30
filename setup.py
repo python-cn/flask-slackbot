@@ -15,7 +15,7 @@ setup(name='Flask-SlackBot',
       license='MIT',
       author='halfcrazy',
       author_email='hackzhuyan@gmail.com',
-      description='Deal with slack\' outgoing webhook ',
+      description='Deal with slack outgoing webhook ',
       long_description=fread('README.md'),
       py_modules=['flask_slack_bot'],
       zip_safe=False,
@@ -26,17 +26,17 @@ setup(name='Flask-SlackBot',
           'requests'
       ],
       classifiers=[
-        'Development Status :: 0 - Beta',
-        'Environment :: Web Environment',
-        'Intended Audience :: Developers',
-        'License :: OSI Approved :: MIT License',
-        'Operating System :: OS Independent',
-        'Programming Language :: Python',
-        'Programming Language :: Python :: 2.6',
-        'Programming Language :: Python :: 2.7',
-        'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.3',
-        'Programming Language :: Python :: 3.4'
-        'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
-        'Topic :: Software Development :: Libraries :: Python Modules'
-        ])
+          'Development Status :: 0 - Beta',
+          'Environment :: Web Environment',
+          'Intended Audience :: Developers',
+          'License :: OSI Approved :: MIT License',
+          'Operating System :: OS Independent',
+          'Programming Language :: Python',
+          'Programming Language :: Python :: 2.6',
+          'Programming Language :: Python :: 2.7',
+          'Programming Language :: Python :: 3',
+          'Programming Language :: Python :: 3.3',
+          'Programming Language :: Python :: 3.4'
+          'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
+          'Topic :: Software Development :: Libraries :: Python Modules'
+      ])
