@@ -1,16 +1,3 @@
-[WIP]Flask-SlackBot
-===================
-
-Flask-SlackBot is a Flask extension which helps you deal with slack's outgoing webhook.
-
-Installation
-------------
-`$ pip install flask-slackbot`
-
-
-Usage
------
-```
 # coding=utf-8 
 from flask import Flask
 
@@ -34,4 +21,3 @@ slackbot.set_handler(fn1)
 if __name__ == "__main__":
 	app.run()
 
-```
