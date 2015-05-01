@@ -11,7 +11,7 @@ def fread(fname):
 
 setup(name='Flask-SlackBot',
       version='0.0.1',
-      url='https://github.com/python-cn/slack-bot',
+      url='https://github.com/python-cn/flask-slackbot',
       license='MIT',
       author='halfcrazy',
       author_email='hackzhuyan@gmail.com',
@@ -23,7 +23,6 @@ setup(name='Flask-SlackBot',
       install_requires=[
           'Flask',
           'slacker',
-          'requests'
       ],
       classifiers=[
           'Development Status :: 0 - Beta',
