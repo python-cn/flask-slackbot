@@ -50,3 +50,16 @@ Usage
     if __name__ == "__main__":
         app.run()
 
+
+.. |Build Status| image:: https://travis-ci.org/halfcrazy/flask-slackbot.svg?branch=master
+   :target: https://travis-ci.org/halfcrazy/flask-slackbot
+   :alt: Build Status
+.. |PyPI Version| image:: https://img.shields.io/pypi/v/Flask-Slackbot.svg
+   :target: https://pypi.python.org/pypi/Flask-SlackBot
+   :alt: PyPI Version
+.. |PyPI Downloads| image:: https://img.shields.io/pypi/dm/Flask-SlackBot.svg
+   :target: https://pypi.python.org/pypi/Flask-SlackBot
+   :alt: Downloads
+.. |Coverage Status| image:: https://img.shields.io/coveralls/halfcrazy/flask-slackbot.svg
+   :target: https://coveralls.io/r/halfcrazy/flask-slackbot
+   :alt: Coverage Status
