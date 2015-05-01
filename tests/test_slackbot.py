@@ -46,9 +46,9 @@ def test_response_directly(app):
     assert rv.status_code == 200
     assert rv.content_type == 'application/json'
     if sys.version_info.major == 2:
-        assert json.loads(rv.data)['text'] == b'test'
+        assert json.loads(rv.data)['text'] == 'test'
     else:
-        assert json.loads(rv.data.decode())['text'] == b'test'
+        assert json.loads(rv.data.decode())['text'] == 'test'
 
 
 def test_invalid_token(app):
@@ -66,4 +66,7 @@ def test_invalid_token(app):
     })
 
     assert rv.status_code == 200
-    assert rv.data == b'unmatch token'
+    if sys.version_info.major == 2:
+        assert rv.data == 'unmatch token'
+    else:
+        assert rv.data == b'unmatch token'
