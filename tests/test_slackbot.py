@@ -1,4 +1,5 @@
 # coding=utf-8
+import sys
 import json
 
 from pytest import fixture
@@ -44,7 +45,10 @@ def test_response_directly(app):
     })
     assert rv.status_code == 200
     assert rv.content_type == 'application/json'
-    assert json.loads(rv.data)['text'] == b'test'
+    if sys.version_info.major == 2:
+        assert json.loads(rv.data)['text'] == b'test'
+    else:
+        assert json.loads(rv.data.decode())['text'] == b'test'
 
 
 def test_invalid_token(app):
