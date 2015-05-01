@@ -12,8 +12,7 @@ slackbot = SlackBot(app)
 
 
 def fn1(kwargs):
-    import json
-    return True, json.dumps({'text': kwargs['text']})
+    return True, {'text': kwargs['text']}
 
 
 def fn2(kwargs):

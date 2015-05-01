@@ -1,3 +1,4 @@
+|Build Status| |Coverage Status| |PyPI Version| |PyPI Downloads|
 
 [WIP]Flask-SlackBot
 ===================
@@ -31,9 +32,8 @@ Usage
     def fn1(kwargs):
         '''
         This function shows response the slack post directly without an extra post.
-        In this case, you need to return a tuple, the first arg is True, and the second is a json.'''
-        import json
-        return True, json.dumps({'text': kwargs['text']})
+        In this case, you need to return a tuple, the first arg is True, and the second is a dictionary.'''
+        return True, {'text': kwargs['text']}
 
 
     def fn2(kwargs):
