@@ -23,6 +23,7 @@ setup(name='Flask-SlackBot',
       install_requires=[
           'Flask',
           'slacker',
+          'six'
       ],
       tests_require=[
         'pytest',

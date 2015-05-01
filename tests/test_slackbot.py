@@ -3,6 +3,7 @@ import json
 
 from pytest import fixture
 from flask import Flask
+from six import b
 
 from flask_slackbot import SlackBot
 
@@ -43,7 +44,7 @@ def test_response_directly(app):
     })
     assert rv.status_code == 200
     assert rv.content_type == 'application/json'
-    assert json.loads(rv.data)['text'] == 'test'
+    assert json.loads(rv.data)['text'] == b'test'
 
 
 def test_invalid_token(app):
@@ -61,4 +62,4 @@ def test_invalid_token(app):
     })
 
     assert rv.status_code == 200
-    assert rv.data == 'unmatch token'
+    assert rv.data == b'unmatch token'
