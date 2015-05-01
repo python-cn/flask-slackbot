@@ -26,9 +26,9 @@ setup(name='Flask-SlackBot',
           'six'
       ],
       tests_require=[
-        'pytest',
-        'pytest-cov',
-        'pytest-pep8',
+          'pytest',
+          'pytest-cov',
+          'pytest-pep8',
       ],
       classifiers=[
           'Development Status :: 2 - Pre-Alpha',
