@@ -42,7 +42,7 @@ Usage
         In this case, you need to return a tuple, the first arg is False, and the second is None.
         Now the slack will ignore the response from this request, and if you need do some complex task you can use the built-in slacker.
         For more information, see https://github.com/os/slacker'''
-        SlackBot.slack.chat.post_message('#general', 'hello from slacker handler')
+        slackbot.slack.chat.post_message('#general', 'hello from slacker handler')
         return False, None
     slackbot.set_handler(fn1)
 
