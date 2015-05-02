@@ -16,7 +16,7 @@ def fn1(kwargs):
 
 
 def fn2(kwargs):
-    SlackBot.slack.chat.post_message('#general', 'hello from slacker handler')
+    slackbot.slack.chat.post_message('#general', 'hello from slacker handler')
     return False, None
 slackbot.set_handler(fn1)
 
