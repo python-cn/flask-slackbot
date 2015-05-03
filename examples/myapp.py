@@ -12,12 +12,12 @@ slackbot = SlackBot(app)
 
 
 def fn1(kwargs):
-    return True, {'text': kwargs['text']}
+    return {'text': kwargs['text']}
 
 
 def fn2(kwargs):
     slackbot.slack.chat.post_message('#general', 'hello from slacker handler')
-    return False, None
+    return None
 slackbot.set_handler(fn1)
 
 
