@@ -32,18 +32,18 @@ Usage
     def fn1(kwargs):
         '''
         This function shows response the slack post directly without an extra post.
-        In this case, you need to return a tuple, the first arg is True, and the second is a dictionary.'''
-        return True, {'text': kwargs['text']}
+        In this case, you need to return a dict.'''
+        return {'text': kwargs['text']}
 
 
     def fn2(kwargs):
         '''
         This function shows response the slack post indirectly with an extra post.
-        In this case, you need to return a tuple, the first arg is False, and the second is None.
+        In this case, you need to return None.
         Now the slack will ignore the response from this request, and if you need do some complex task you can use the built-in slacker.
         For more information, see https://github.com/os/slacker'''
         slackbot.slack.chat.post_message('#general', 'hello from slacker handler')
-        return False, None
+        return None
     slackbot.set_handler(fn1)
 
 

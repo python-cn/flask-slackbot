@@ -22,7 +22,7 @@ class App(object):
 
     @staticmethod
     def fn(kwargs):
-        return True, {'text': kwargs['text']}
+        return {'text': kwargs['text']}
 
 
 @fixture(scope='module')

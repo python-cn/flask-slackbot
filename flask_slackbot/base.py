@@ -50,7 +50,7 @@ class SlackBot(object):
         '''
         use flag to determine whether response directly,
         or use slacker to deal'''
-        flag, d = self.handler({
+        rv = self.handler({
             'token': token,
             'team_id': team_id,
             'team_domain': team_domain,
@@ -62,7 +62,7 @@ class SlackBot(object):
             'text': text,
             'trigger_word': trigger_word
         })
-        if flag:
-            return jsonify(**d)
+        if isinstance(rv, dict):
+            return jsonify(rv)
         else:
             return make_response('', 200)
