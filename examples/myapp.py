@@ -12,13 +12,20 @@ slackbot = SlackBot(app)
 
 
 def fn1(kwargs):
-    return {'text': kwargs['text']}
+    return {'text': '!' + kwargs['text']}
 
 
 def fn2(kwargs):
     slackbot.slack.chat.post_message('#general', 'hello from slacker handler')
     return None
+
+
+def fn3(text):
+    return text.startswith('!')
+
+
 slackbot.set_handler(fn1)
+slackbot.filter_outgoing(fn3)
 
 
 if __name__ == "__main__":

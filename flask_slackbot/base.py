@@ -29,6 +29,9 @@ class SlackBot(object):
     def set_handler(self, fn):
         self.handler = fn
 
+    def filter_outgoing(self, fn):
+        self._filter = fn
+
     def slack_callback(self):
         token = request.form.get('token')
         team_id = request.form.get('team_id')
@@ -40,6 +43,9 @@ class SlackBot(object):
         user_name = request.form.get('user_name')
         text = request.form.get('text')
         trigger_word = request.form.get('trigger_word')
+
+        if hasattr(self, '_filter') and self._filter(text):
+            return make_response('', 200)
 
         try:
             if token != current_app.config.get('SLACK_TOKEN'):
