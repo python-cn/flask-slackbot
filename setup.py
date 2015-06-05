@@ -9,7 +9,7 @@ def fread(fname):
         return f.read()
 
 
-setup(name='Flask-SlackBot',
+setup(name='flask_slackbot',
       version='0.0.9',
       url='https://github.com/python-cn/flask-slackbot',
       license='MIT',
@@ -17,7 +17,7 @@ setup(name='Flask-SlackBot',
       author_email='hackzhuyan@gmail.com',
       description='Deal with slack outgoing webhook ',
       long_description=fread('README.rst'),
-      py_modules=['flask_slackbot'],
+      packages=['flask_slackbot'],
       zip_safe=False,
       platforms='any',
       install_requires=[
