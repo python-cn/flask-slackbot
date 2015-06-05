@@ -1,6 +1,6 @@
 |Build Status| |Coverage Status| |PyPI Version| |PyPI Downloads|
 
-[WIP]Flask-SlackBot
+Flask-SlackBot
 ===================
 
 Flask-SlackBot is a Flask extension which helps you deal with slack's outgoing webhook.
@@ -53,7 +53,7 @@ Usage
 
 Trap
 ------------
-If you don't set a trigger word, and your callback server return some text to slack, there would be a callback hell. You know like ping pong, and then turn into an infinite loop.
+If you have not set a trigger word, and your callback server return some text to slack, there would be a callback hell. You know like ping pong, and then turn into an infinite loop.
 
 .. |Build Status| image:: https://travis-ci.org/halfcrazy/flask-slackbot.svg?branch=master
    :target: https://travis-ci.org/halfcrazy/flask-slackbot
