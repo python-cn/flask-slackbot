@@ -33,7 +33,7 @@ Usage
         '''
         This function shows response the slack post directly without an extra post.
         In this case, you need to return a dict.'''
-        return {'text': kwargs['text']}
+        return {'text': '!' + kwargs['text']} # Note the '!' character here is an user defined flag to tell the slack, this message is sent from the bot.
 
 
     def fn2(kwargs):
@@ -44,7 +44,15 @@ Usage
         For more information, see https://github.com/os/slacker'''
         slackbot.slack.chat.post_message('#general', 'hello from slacker handler')
         return None
+
+
+    def fn3(text):
+        ```
+        This function is a filter, which makes our bot ignore the text sent from itself.'''
+        return text.startswith('!')
+
     slackbot.set_handler(fn1)
+    slackbot.filter_outgoing(fn3)
 
 
     if __name__ == "__main__":
