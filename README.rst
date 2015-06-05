@@ -51,6 +51,10 @@ Usage
         app.run()
 
 
+Trap
+------------
+If you don't set a trigger word, and your callback server return some text to slack, there would be a callback hell. You know like ping pong, and then turn into an infinite loop.
+
 .. |Build Status| image:: https://travis-ci.org/halfcrazy/flask-slackbot.svg?branch=master
    :target: https://travis-ci.org/halfcrazy/flask-slackbot
    :alt: Build Status
