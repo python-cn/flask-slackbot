@@ -28,7 +28,23 @@ Usage
     app.debug = True
     slackbot = SlackBot(app)
 
-
+    ```
+    The parameter of the callback function is a dict returns from the slack's outgoing api.
+    Here is the detail:
+    kwargs
+    {
+        'token': token,
+        'team_id': team_id,
+        'team_domain': team_domain,
+        'channel_id': channel_id,
+        'channel_name': channel_name,
+        'timestamp': timestamp,
+        'user_id': user_id,
+        'user_name': user_name,
+        'text': text,
+        'trigger_word': trigger_word
+    }
+    ```
     def fn1(kwargs):
         '''
         This function shows response the slack post directly without an extra post.
