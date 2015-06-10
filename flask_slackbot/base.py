@@ -1,6 +1,7 @@
 # coding=utf-8
-from flask import current_app, Blueprint, request, jsonify, make_response
+import cgi
 
+from flask import current_app, Blueprint, request, jsonify, make_response
 from slacker import Slacker
 
 from .exceptions import SlackTokenError
@@ -69,6 +70,8 @@ class SlackBot(object):
             'trigger_word': trigger_word
         })
         if isinstance(rv, dict):
+            for key in rv:
+                rv.update({key: cgi.escape(rv[key])})
             return jsonify(rv)
         else:
             return make_response('', 200)
