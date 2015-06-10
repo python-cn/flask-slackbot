@@ -63,7 +63,7 @@ Usage
 
 
     def fn3(text):
-        ```
+        '''
         This function is a filter, which makes our bot ignore the text sent from itself.'''
         return text.startswith('!')
 
