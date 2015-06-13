@@ -1,10 +1,14 @@
 # coding=utf-8
 import cgi
+from functools import partial
 
 from flask import current_app, Blueprint, request, jsonify, make_response
 from slacker import Slacker
 
 from .exceptions import SlackTokenError
+
+
+default_response = partial(make_response, '', 200)
 
 
 class SlackBot(object):
@@ -46,7 +50,7 @@ class SlackBot(object):
         trigger_word = request.form.get('trigger_word')
 
         if hasattr(self, '_filter') and self._filter(text):
-            return make_response('', 200)
+            return default_response()
 
         try:
             if token != current_app.config.get('SLACK_TOKEN'):
@@ -69,9 +73,14 @@ class SlackBot(object):
             'text': text,
             'trigger_word': trigger_word
         })
+
         if isinstance(rv, dict):
+            if rv.get('private', False):
+                # This will send private message to user
+                self.slack.chat.post_message(user_id, rv['text'])
+                return default_response()
             for key in rv:
                 rv.update({key: cgi.escape(rv[key])})
             return jsonify(rv)
         else:
-            return make_response('', 200)
+            return default_response()
