@@ -20,6 +20,7 @@ class SlackBot(object):
 
     def init_app(self, app):
         self.slack_token = app.config.get('SLACK_TOKEN')
+        self.slack_chat_token = app.config.get('SLACK_CHAT_TOKEN')
         self.callback_url = app.config.get('SLACK_CALLBACK')
         self.slack = Slacker(self.slack_token)
         self.init_bp()
@@ -77,7 +78,8 @@ class SlackBot(object):
         if isinstance(rv, dict):
             if rv.get('private', False):
                 # This will send private message to user
-                self.slack.chat.post_message(user_id, rv['text'])
+                slack = Slacker(self.slack_chat_token)
+                slack.chat.post_message(user_id, cgi.escape(rv['text']))
                 return default_response()
             for key in rv:
                 rv.update({key: cgi.escape(rv[key])})
