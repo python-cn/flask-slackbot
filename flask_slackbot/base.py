@@ -76,7 +76,7 @@ class SlackBot(object):
         })
 
         if isinstance(rv, dict):
-            if rv.get('private', False):
+            if rv.pop('private', False):
                 # This will send private message to user
                 slack = Slacker(self.slack_chat_token)
                 slack.chat.post_message(user_id, cgi.escape(rv['text']))
