@@ -66,4 +66,7 @@ def test_invalid_token(app):
     })
 
     assert rv.status_code == 200
-    assert rv.data == b('unmatch token')
+    if sys.version_info.major == 2:
+        assert json.loads(rv.data)['text'] == 'unmatch token'
+    else:
+        assert json.loads(rv.data.decode())['text'] == 'unmatch token'
