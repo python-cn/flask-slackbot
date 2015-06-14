@@ -25,6 +25,8 @@ Usage
 
     app = Flask(__name__)
     app.config['SLACK_TOKEN'] = 'Your token here'
+    # if you need to use slacker you should give a slack chat token
+    app.config['SLACK_CHAT_TOKEN'] = 'Your slack chat token'
     app.config['SLACK_CALLBACK'] = '/slack_callback'
     app.debug = True
     slackbot = SlackBot(app)
@@ -50,6 +52,14 @@ Usage
         This function shows response the slack post directly without an extra post.
         In this case, you need to return a dict.'''
         return {'text': '!' + kwargs['text']} # Note the '!' character here is an user defined flag to tell the slack, this message is sent from the bot.
+
+
+    def fn4(kwargs):
+        '''
+        This function looks like upper one. But a little different, this will only response to the sender.
+        In this case, you need to return a dict with an extra key private setted as True.
+        And if you need this function, you should given the slack chat token in config.'''
+        return {'text': '!' + kwargs['text'], 'private': True} # Note the '!' character here is an user defined flag to tell the slack, this message is sent from the bot.
 
 
     def fn2(kwargs):

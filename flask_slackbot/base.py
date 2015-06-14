@@ -5,7 +5,7 @@ from functools import partial
 from flask import current_app, Blueprint, request, jsonify, make_response
 from slacker import Slacker
 
-from .exceptions import SlackTokenError
+from .exceptions import SlackTokenError, NoSlackerError
 
 
 default_response = partial(make_response, '', 200)
@@ -21,8 +21,13 @@ class SlackBot(object):
     def init_app(self, app):
         self.slack_token = app.config.get('SLACK_TOKEN')
         self.slack_chat_token = app.config.get('SLACK_CHAT_TOKEN')
+
+        if self.slack_chat_token:
+            self.slack = Slacker(self.slack_chat_token)
+        else:
+            self.slack = None
+
         self.callback_url = app.config.get('SLACK_CALLBACK')
-        self.slack = Slacker(self.slack_token)
         self.init_bp()
 
     def init_bp(self):
@@ -57,7 +62,7 @@ class SlackBot(object):
             if token != current_app.config.get('SLACK_TOKEN'):
                 raise SlackTokenError('unmatch token')
         except SlackTokenError as e:
-            return make_response(e.msg, 200)
+            return jsonify({'text': e.msg})
 
         '''
         use flag to determine whether response directly,
@@ -78,9 +83,16 @@ class SlackBot(object):
         if isinstance(rv, dict):
             if rv.pop('private', False):
                 # This will send private message to user
-                slack = Slacker(self.slack_chat_token)
-                slack.chat.post_message(user_id, cgi.escape(rv['text']))
+                try:
+                    if self.slack:
+                        self.slack.chat.post_message(user_id,
+                                                     cgi.escape(rv['text']))
+                    else:
+                        raise NoSlackerError('you have not initialize slacker')
+                except NoSlackerError as e:
+                    return jsonify({'text': e.msg})
                 return default_response()
+
             for key in rv:
                 rv.update({key: cgi.escape(rv[key])})
             return jsonify(rv)
