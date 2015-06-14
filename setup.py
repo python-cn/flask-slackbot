@@ -10,11 +10,13 @@ def fread(fname):
 
 
 setup(name='flask_slackbot',
-      version='0.1.5',
+      version='0.1.6',
       url='https://github.com/python-cn/flask-slackbot',
       license='MIT',
       author='halfcrazy',
       author_email='hackzhuyan@gmail.com',
+      maintainer='dongweiming',
+      maintainer_email='ciici123@gmail.com',
       description='Deal with slack outgoing webhook ',
       long_description=fread('README.rst'),
       packages=['flask_slackbot'],
