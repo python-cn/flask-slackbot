@@ -4,7 +4,7 @@ from functools import partial
 from flask import current_app, Blueprint, request, jsonify, make_response
 from slacker import Slacker
 
-from .exceptions import SlackTokenError, NoSlackerError
+from .exceptions import SlackTokenError
 
 
 default_response = partial(make_response, '', 200)
@@ -80,16 +80,13 @@ class SlackBot(object):
         })
 
         if isinstance(rv, dict):
+            if not self.slack:
+                return jsonify({'text': 'you have not initialize slacker'})
+            attachments = rv.get('attachments', None)
             if rv.pop('private', False):
                 # This will send private message to user
-                try:
-                    if self.slack:
-                        self.slack.chat.post_message(user_id, rv['text'])
-                    else:
-                        raise NoSlackerError('you have not initialize slacker')
-                except NoSlackerError as e:
-                    return jsonify({'text': e.msg})
-                return default_response()
-            return jsonify(rv)
-        else:
-            return default_response()
+                self.slack.chat.post_message(user_id, rv['text'],
+                                             attachments=attachments)
+            elif rv['text']:
+                return jsonify(rv)
+        return default_response()
