@@ -8,6 +8,7 @@ from .exceptions import SlackTokenError
 
 
 default_response = partial(make_response, '', 200)
+MAX_LENGTH = 1000
 
 
 class SlackBot(object):
@@ -83,10 +84,25 @@ class SlackBot(object):
             if not self.slack:
                 return jsonify({'text': 'you have not initialize slacker'})
             attachments = rv.get('attachments', None)
+            text = rv['text']
+            if not isinstance(text, unicode):
+                text = text.decode('utf-8')
             if rv.pop('private', False):
                 # This will send private message to user
-                self.slack.chat.post_message(user_id, rv['text'],
-                                             attachments=attachments)
-            elif rv['text']:
+                # If message too long. will raise 414
+                if len(text) >= MAX_LENGTH:
+                    while text:
+                        _text = text[:MAX_LENGTH]
+                        text = text[MAX_LENGTH:]
+                        self.slack.chat.post_message(user_id, _text,
+                                                     attachments=attachments)
+                elif len(str(attachments)) >= MAX_LENGTH:
+                    for _attachments in zip(*[iter(attachments)] * 10):
+                        self.slack.chat.post_message(
+                            user_id, text, attachments=list(_attachments))
+                else:
+                    self.slack.chat.post_message(user_id, rv['text'],
+                                                 attachments=attachments)
+            elif text:
                 return jsonify(rv)
         return default_response()
