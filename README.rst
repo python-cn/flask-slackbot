@@ -17,7 +17,7 @@ Usage
 
 .. code-block:: python
 
-    # coding=utf-8 
+    # coding=utf-8
     from flask import Flask
 
     from flask_slackbot import SlackBot
@@ -89,7 +89,7 @@ Trap
 ------------
 If you have not set a trigger word, and your callback server return some text to slack, there would be a callback hell. You know like ping pong, and then turn into an infinite loop.
 
-.. |Build Status| image:: https://travis-ci.org/halfcrazy/flask-slackbot.svg?branch=master
+.. |Build Status| image:: https://travis-ci.org/python-cn/flask-slackbot.svg?branch=master
    :target: https://travis-ci.org/halfcrazy/flask-slackbot
    :alt: Build Status
 .. |PyPI Version| image:: https://img.shields.io/pypi/v/Flask-Slackbot.svg
@@ -98,6 +98,6 @@ If you have not set a trigger word, and your callback server return some text to
 .. |PyPI Downloads| image:: https://img.shields.io/pypi/dm/Flask-SlackBot.svg
    :target: https://pypi.python.org/pypi/Flask-SlackBot
    :alt: Downloads
-.. |Coverage Status| image:: https://img.shields.io/coveralls/halfcrazy/flask-slackbot.svg
+.. |Coverage Status| image:: https://img.shields.io/coveralls/python-cn/flask-slackbot.svg
    :target: https://coveralls.io/r/halfcrazy/flask-slackbot
    :alt: Coverage Status

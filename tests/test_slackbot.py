@@ -15,6 +15,7 @@ class App(object):
         self.app = Flask(__name__)
         self.app.debug = True
         self.app.config['SLACK_TOKEN'] = 'Your token here'
+        self.app.config['SLACK_CHAT_TOKEN'] = 'Your token here'
         self.app.config['SLACK_CALLBACK'] = '/slack_callback'
         self.slackbot = SlackBot(self.app)
         self.slackbot.set_handler(self.fn)
