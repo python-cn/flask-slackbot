@@ -90,7 +90,7 @@ Trap
 If you have not set a trigger word, and your callback server return some text to slack, there would be a callback hell. You know like ping pong, and then turn into an infinite loop.
 
 .. |Build Status| image:: https://travis-ci.org/python-cn/flask-slackbot.svg?branch=master
-   :target: https://travis-ci.org/halfcrazy/flask-slackbot
+   :target: https://travis-ci.org/python-cn/flask-slackbot
    :alt: Build Status
 .. |PyPI Version| image:: https://img.shields.io/pypi/v/Flask-Slackbot.svg
    :target: https://pypi.python.org/pypi/Flask-SlackBot
@@ -99,5 +99,5 @@ If you have not set a trigger word, and your callback server return some text to
    :target: https://pypi.python.org/pypi/Flask-SlackBot
    :alt: Downloads
 .. |Coverage Status| image:: https://img.shields.io/coveralls/python-cn/flask-slackbot.svg
-   :target: https://coveralls.io/r/halfcrazy/flask-slackbot
+   :target: https://coveralls.io/r/python-cn/flask-slackbot
    :alt: Coverage Status
