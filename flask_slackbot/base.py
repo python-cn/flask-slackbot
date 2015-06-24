@@ -2,7 +2,7 @@
 import sys
 from functools import partial
 
-from flask import current_app, Blueprint, request, jsonify, make_response
+from flask import Blueprint, request, jsonify, make_response
 from slacker import Slacker
 
 
@@ -77,7 +77,7 @@ class SlackBot(object):
                 return jsonify({'text': 'you have not initialize slacker'})
             attachments = rv.get('attachments', None)
             text = rv['text']
-            if sys.version_info.major == 2 and isinstance(text, str):
+            if sys.version_info.major == 2 and not isinstance(text, str):
                 text = text.encode('utf-8')
             if rv.pop('private', False):
                 # This will send private message to user

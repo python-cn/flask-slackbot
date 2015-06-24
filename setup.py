@@ -10,7 +10,7 @@ def fread(fname):
 
 
 setup(name='flask_slackbot',
-      version='0.2.0',
+      version='0.2.1',
       url='https://github.com/python-cn/flask-slackbot',
       license='MIT',
       author='halfcrazy',
