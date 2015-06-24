@@ -5,8 +5,6 @@ from functools import partial
 from flask import current_app, Blueprint, request, jsonify, make_response
 from slacker import Slacker
 
-from .exceptions import SlackTokenError
-
 
 default_response = partial(make_response, '', 200)
 MAX_LENGTH = 1000
@@ -20,7 +18,6 @@ class SlackBot(object):
             self.init_app(app)
 
     def init_app(self, app):
-        self.slack_token = app.config.get('SLACK_TOKEN')
         self.slack_chat_token = app.config.get('SLACK_CHAT_TOKEN')
 
         if self.slack_chat_token:
@@ -58,12 +55,6 @@ class SlackBot(object):
 
         if hasattr(self, '_filter') and self._filter(text):
             return default_response()
-
-        try:
-            if token != current_app.config.get('SLACK_TOKEN'):
-                raise SlackTokenError('unmatch token')
-        except SlackTokenError as e:
-            return jsonify({'text': e.msg})
 
         '''
         use flag to determine whether response directly,
