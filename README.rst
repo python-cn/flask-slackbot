@@ -1,15 +1,15 @@
 |Build Status| |Coverage Status| |PyPI Version| |PyPI Downloads|
 
-Flask-SlackBot
+flask_slackbot
 ===================
 
-Flask-SlackBot is a Flask extension which helps you deal with slack's outgoing webhook.
+flask_slackbot is a Flask extension which helps you deal with slack's outgoing webhook.
 
 Installation
 ------------
 ::
 
-    $ pip install flask-slackbot
+    $ pip install flask_slackbot
 
 
 Usage
@@ -92,11 +92,11 @@ If you have not set a trigger word, and your callback server return some text to
 .. |Build Status| image:: https://travis-ci.org/python-cn/flask-slackbot.svg?branch=master
    :target: https://travis-ci.org/python-cn/flask-slackbot
    :alt: Build Status
-.. |PyPI Version| image:: https://img.shields.io/pypi/v/Flask-Slackbot.svg
-   :target: https://pypi.python.org/pypi/Flask-SlackBot
+.. |PyPI Version| image:: https://img.shields.io/pypi/v/flask_slackbot.svg
+   :target: https://pypi.python.org/pypi/flask_slackbot
    :alt: PyPI Version
-.. |PyPI Downloads| image:: https://img.shields.io/pypi/dm/Flask-SlackBot.svg
-   :target: https://pypi.python.org/pypi/Flask-SlackBot
+.. |PyPI Downloads| image:: https://img.shields.io/pypi/dm/flask_slackbot.svg
+   :target: https://pypi.python.org/pypi/flask_slackbot
    :alt: Downloads
 .. |Coverage Status| image:: https://img.shields.io/coveralls/python-cn/flask-slackbot.svg
    :target: https://coveralls.io/r/python-cn/flask-slackbot
