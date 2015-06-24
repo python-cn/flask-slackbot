@@ -50,24 +50,3 @@ def test_response_directly(app):
         assert json.loads(rv.data)['text'] == 'test'
     else:
         assert json.loads(rv.data.decode())['text'] == 'test'
-
-
-def test_invalid_token(app):
-    rv = app.client.post('/slack_callback', data={
-        'token': 'unmatch token',
-        'text': 'test',
-        'team_id': 'team_id',
-        'team_domain': 'team_domain',
-        'channel_id': 'channel_id',
-        'channel_name': 'channel_name',
-        'timestamp': 'timestamp',
-        'user_id': 'user_id',
-        'user_name': 'user_name',
-        'trigger_word': 'trigger_word'
-    })
-
-    assert rv.status_code == 200
-    if sys.version_info.major == 2:
-        assert json.loads(rv.data)['text'] == 'unmatch token'
-    else:
-        assert json.loads(rv.data.decode())['text'] == 'unmatch token'
